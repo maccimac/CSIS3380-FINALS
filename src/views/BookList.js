@@ -1,3 +1,4 @@
+import { API_ENDPOINT } from "../utils";
 import { useState, useEffect } from "react";
 // import {Link} from "react-router-dom"
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
@@ -7,22 +8,36 @@ import BookCard from "./../components/BookCard"
 
 function BookList() {
     const [books, setBooks] = useState([]);
-  
-    useEffect(() => {
+
+    const fetchBooks = () => {
       axios
-        .get('http://localhost:5000')
+        .get(`${API_ENDPOINT}`)
         .then((res) => {
           setBooks(res.data);
         })
         .catch((err) => {
           console.log('Error from BookList');
         });
+    }
+  
+    useEffect(() => {
+      fetchBooks();
+      
     }, []);
   
+    const deleteBook = async (id)=>{
+      const delRes = await axios
+        .delete(`${API_ENDPOINT}/` + id);
+      if(delRes) fetchBooks()
+    } 
     const bookList =
       books.length === 0
         ? 'there is no book record!'
-        : books.map((book, k) => <BookCard book={book} key={k} />);
+        : books.map((book, k) => 
+        <BookCard 
+          book={book} 
+          deleteBook={ ()=>deleteBook(book._id)} 
+          key={k} />);
   
     return (
       <div className='BookList'>

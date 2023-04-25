@@ -5,24 +5,32 @@ import axios from "axios";
 
 function CreateBook(){
 
+    const [author, setAuthor] = useState("");
+    const [title, setTitle] = useState("");
+    const [description, setDesc] = useState("");
+
+
 
     const createBook = async(evt) =>{
         evt.preventDefault();
         try {
             const response = await axios.post(`${API_ENDPOINT}`, {
-                title: "Some title",
-                author: "Some author",
-                description: "A good book"
+                title,
+                author,
+                description
             }, {
                 headers: {
                   "Content-Type": "application/json",
                 },
               });
             console.log(response.data);
+            setAuthor("")
+            setTitle("");
+            setDesc("");
             return response.data
           } catch (error) {
             console.error(error);
-          }
+          } 
     }
 
     return(
@@ -42,7 +50,8 @@ function CreateBook(){
                   placeholder="Title of the Book"
                   name="title"
                   class="form-control"
-                  value=""
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
                   spellcheck="false"
                   data-ms-editor="true"
                 />
@@ -53,7 +62,8 @@ function CreateBook(){
                   placeholder="Author"
                   name="author"
                   class="form-control"
-                  value=""
+                  value={author}
+                  onChange={(event) => setAuthor(event.target.value)}
                   spellcheck="false"
                   data-ms-editor="true"
                 />
@@ -64,7 +74,8 @@ function CreateBook(){
                   placeholder="Describe this book"
                   name="description"
                   class="form-control"
-                  value=""
+                  value={description}
+                  onChange={(event) => setDesc(event.target.value)}
                   spellcheck="false"
                   data-ms-editor="true"
                 />

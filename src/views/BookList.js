@@ -1,4 +1,4 @@
-import { API_ENDPOINT } from "../utils";
+import { URI } from "../utils";
 import { useState, useEffect } from "react";
 // import {Link} from "react-router-dom"
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ function BookList() {
 
     const fetchBooks = () => {
       axios
-        .get(`${API_ENDPOINT}`)
+        .get(`${URI}`)
         .then((res) => {
           setBooks(res.data);
         })
@@ -27,7 +27,7 @@ function BookList() {
   
     const deleteBook = async (id)=>{
       const delRes = await axios
-        .delete(`${API_ENDPOINT}/` + id);
+        .delete(`${URI}/` + id);
       if(delRes) fetchBooks()
     } 
     const bookList =
@@ -46,6 +46,9 @@ function BookList() {
             <div className='col-md-12'>
               <br />
               <h2 className='display-4 text-center'>Books List</h2>
+              <div class="counter">
+                  {books.length}
+              </div>
             </div>
   
             <div className='col-md-11'>

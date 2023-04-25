@@ -1,4 +1,4 @@
-import { API_ENDPOINT } from "../utils";
+import { URI } from "../utils";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -14,7 +14,7 @@ function CreateBook(){
     const createBook = async(evt) =>{
         evt.preventDefault();
         try {
-            const response = await axios.post(`${API_ENDPOINT}`, {
+            const response = await axios.post(`${URI}`, {
                 title,
                 author,
                 description

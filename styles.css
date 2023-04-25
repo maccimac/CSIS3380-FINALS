@@ -55,6 +55,15 @@ body {
     min-height: 100vh;
     min-width: 100px;
   }
+
+  .counter{
+    height: 48px;
+    width: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: goldenrod;
+  }
   
   /* BookList Styles */
   .list {

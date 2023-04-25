@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import axios  from "axios";
 
 function BookCard({book, deleteBook}) {
-    return <div class="card-container outline mx-4">
+    return <div class="card-container outline m-4">
     <img
       src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d"
       alt="Books"

@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+.counter{
+  height: 48px;
+  width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: goldenrod;
+  border-radius: 48px;
+  font-weight: 500;
+}

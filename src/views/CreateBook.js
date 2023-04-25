@@ -1,15 +1,15 @@
 import { URI } from "../utils";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
 function CreateBook(){
+    const navigate = useNavigate();
 
     const [author, setAuthor] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDesc] = useState("");
-
-
 
     const createBook = async(evt) =>{
         evt.preventDefault();
@@ -27,6 +27,7 @@ function CreateBook(){
             setAuthor("")
             setTitle("");
             setDesc("");
+            navigate("/")
             return response.data
           } catch (error) {
             console.error(error);

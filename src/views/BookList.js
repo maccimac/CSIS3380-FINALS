@@ -46,7 +46,7 @@ function BookList() {
             </div>
           </div>
   
-          <div className='list'>{bookList}</div>
+          <div className='list d-flex'>{bookList}</div>
         </div>
       </div>
     );
